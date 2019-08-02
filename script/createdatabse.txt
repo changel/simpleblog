@@ -1,0 +1,5 @@
+create database simpleblog;
+show DATABASES;
+use simpleblog;
+show tables;
+grant all privileges on simpleblog to blog@localhost identified by 'blog';
