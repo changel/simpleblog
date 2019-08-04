@@ -13,7 +13,7 @@ import java.util.List;
  * @Version 1.0
  */
 @Repository
-public interface IUserDao extends JpaRepository<User,Long> {
+public interface IUserDao extends JpaRepository<User,Integer> {
 
     /**
      *  根据username查询用户信息

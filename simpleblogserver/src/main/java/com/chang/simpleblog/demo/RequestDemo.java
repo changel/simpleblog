@@ -1,4 +1,4 @@
-package com.chang.simpleblog.Demo;
+package com.chang.simpleblog.demo;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
