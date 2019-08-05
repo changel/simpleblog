@@ -1,0 +1,1 @@
+cnpm i svg-sprite-loader  обть╡Е╪Ч
