@@ -4,13 +4,31 @@
 
 const path = require('path')
 
+const BLOG_SERVERURL = 'http://127.0.0.1:80'
+const MANAGER_SERVERURL = 'http://127.0.0.1:8082'
+
 module.exports = {
   dev: {
 
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/blog':{ //此处并非一定和url一致。
+        target: BLOG_SERVERURL,
+        changeOrigin:true,//允许跨域
+        pathRewrite:{
+          '^/': ''
+        }
+      },
+      '/manager':{
+        target: MANAGER_SERVERURL,
+        changeOrigin:true,//允许跨域
+        pathRewrite:{
+          '^/': ''
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

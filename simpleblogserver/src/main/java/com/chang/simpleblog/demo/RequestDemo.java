@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController()
 public class RequestDemo {
 
-    @RequestMapping(value = "/hello",method = RequestMethod.GET)
+    @RequestMapping(value = "/blog/hello")
     public String printHello(){
         return "hello word";
     }
