@@ -8,7 +8,9 @@ package com.chang.simpleblog.common;
  */
 public enum ResultEnums {
 
-    SUCCESS(200, "请求成功"),
+    FAIL(0,"FAIL"),
+    OK(1,"OK",true),
+    SUCCESS(200, "请求成功",true),
     BAD_REQUEST_ERROR(400, "无效请求"),
     NOT_FOUND_ERROR(404, "请求的页面不存在"),
     ERROR(500, "系统错误"),
@@ -16,12 +18,18 @@ public enum ResultEnums {
 
     private Integer code;
     private String msg;
+    private Boolean status;//结果状态  默认false不正常
 
     ResultEnums(Integer code, String msg) {
         this.code = code;
         this.msg = msg;
+        this.status = false;
     }
-
+    ResultEnums(Integer code, String msg,Boolean status) {
+        this.code = code;
+        this.msg = msg;
+        this.status = status;
+    }
     public Integer getCode() {
         return code;
     }
@@ -36,5 +44,13 @@ public enum ResultEnums {
 
     public void setMsg(String msg) {
         this.msg = msg;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 }

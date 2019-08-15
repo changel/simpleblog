@@ -83,11 +83,14 @@ export default {
       }
       if (this.loading === false) {
         this.loading = true
-        this.$http.post('/blog/hello', this.loginForm).then(() => {
+        this.$http.post('/blog/login', this.loginForm).then((result) => {
           this.loginError = ''
-          setTimeout(() => {
+          if (result.status) {
+            this.loginError = result.body.msg
             this.loading = false
-          }, 1000)
+          } else {
+            this.loginError = result.body.msg
+          }
           this.$router.push({path: '/'})
         }).catch((error) => {
           this.loginError = error.message

@@ -2,6 +2,7 @@ package com.chang.simpleblog.basedata.entity;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  *  用户实体
@@ -10,7 +11,7 @@ import javax.persistence.*;
  * @Version 1.0
  */
 @Entity
-@Table(name = "USER")
+@Table(name = "Blog_User")
 public class User {
 
     @Id

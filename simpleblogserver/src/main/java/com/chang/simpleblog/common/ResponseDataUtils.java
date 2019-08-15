@@ -26,15 +26,23 @@ public class ResponseDataUtils {
         return new ResponseData(ResultEnums.SUCCESS.getCode(), msg);
     }
 
-    public static ResponseData buildSuccess(Integer code, String msg) {
+    public static ResponseData buildResponseData(Integer code, String msg) {
         return new ResponseData(code, msg);
     }
 
-    public static <T> ResponseData buildSuccess(Integer code, String msg, T data) {
+    public static ResponseData buildResponseData(Integer code, String msg,Boolean status) {
+        return new ResponseData(code, msg, status);
+    }
+
+    public static <T> ResponseData buildResponseData(Integer code, String msg, T data, Boolean status) {
+        return new ResponseData<T>(code, msg, data,status);
+    }
+
+    public static <T> ResponseData buildResponseData(Integer code, String msg, T data) {
         return new ResponseData<T>(code, msg, data);
     }
 
-    public static ResponseData buildSuccess(ResultEnums resultEnums) {
+    public static ResponseData buildResponseData(ResultEnums resultEnums) {
         return new ResponseData(resultEnums);
     }
 
@@ -47,18 +55,33 @@ public class ResponseDataUtils {
     }
 
     public static ResponseData buildError(String msg) {
-        return new ResponseData(ResultEnums.ERROR.getCode(), msg);
+        return new ResponseData(ResultEnums.ERROR.getCode(), msg,ResultEnums.ERROR.getStatus());
     }
 
-    public static ResponseData buildError(Integer code, String msg) {
-        return new ResponseData(code, msg);
+    public static ResponseData buildOK(String msg) {
+        return new ResponseData(ResultEnums.OK.getCode(), msg,ResultEnums.OK.getStatus());
+    }
+    public static ResponseData buildOK() {
+        return buildOK("");
     }
 
-    public static <T> ResponseData buildError(Integer code, String msg, T data) {
-        return new ResponseData<T>(code, msg, data);
+    public static ResponseData buildFail(String msg) {
+        return new ResponseData(ResultEnums.FAIL.getCode(), msg,ResultEnums.FAIL.getStatus());
     }
 
-    public static ResponseData buildError(ResultEnums resultEnums) {
-        return new ResponseData(resultEnums);
+    public static ResponseData buildErrorResponseData(Integer code, String msg) {
+        return buildResponseData(code,msg,false);
+    }
+
+    public static <T> ResponseData buildErrorResponseData(Integer code, String msg, T data) {
+        return buildResponseData(code,msg,data,false);
+    }
+
+    public static ResponseData buildSuccessResponseData(Integer code, String msg) {
+        return buildResponseData(code,msg,true);
+    }
+
+    public static <T> ResponseData buildSuccessResponseData(Integer code, String msg, T data) {
+        return buildResponseData(code,msg,data,true);
     }
 }

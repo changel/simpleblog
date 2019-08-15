@@ -14,26 +14,46 @@ public class ResponseData<T> {
 
     private T data;
 
+    //返回状态  默认为false
+    private Boolean status;
+
     public ResponseData(Integer code, String msg, T data) {
         this.code = code;
         this.msg = msg;
         this.data = data;
+        this.status = false;
+    }
+
+    public ResponseData(Integer code, String msg, T data,Boolean status) {
+        this.code = code;
+        this.msg = msg;
+        this.data = data;
+        this.status = status;
     }
 
     public ResponseData(Integer code, String msg) {
         this.code = code;
         this.msg = msg;
+        this.status = false;
+    }
+
+    public ResponseData(Integer code, String msg,Boolean status) {
+        this.code = code;
+        this.msg = msg;
+        this.status = status;
     }
 
     public ResponseData(ResultEnums resultEnums) {
         this.code = resultEnums.getCode();
         this.msg = resultEnums.getMsg();
+        this.status = resultEnums.getStatus();
     }
 
     public ResponseData(ResultEnums resultEnums, T data) {
         this.code = resultEnums.getCode();
         this.msg = resultEnums.getMsg();
         this.data = data;
+        this.status = resultEnums.getStatus();
     }
 
     public ResponseData() {
@@ -62,5 +82,13 @@ public class ResponseData<T> {
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 }

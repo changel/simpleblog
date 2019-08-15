@@ -13,7 +13,7 @@ import java.util.List;
  * @Version 1.0
  */
 @Repository
-public interface IUserDao extends JpaRepository<User,Integer> {
+public interface UserDao extends JpaRepository<User,Integer> {
 
     /**
      *  根据username查询用户信息
@@ -29,6 +29,6 @@ public interface IUserDao extends JpaRepository<User,Integer> {
      */
     public List<User> findUserByDisplayname(String displayname);
 
-    @Query(nativeQuery = true,value = "select * from USER  WHERE displayName like CONCAT('%', :name ,'%')")
+    @Query(nativeQuery = true,value = "select * from BLOG_USER  WHERE displayName like CONCAT('%', :name ,'%')")
     public List<User> findUserByNameLike(@Param("name") String name);
 }

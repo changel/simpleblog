@@ -1,6 +1,6 @@
 package com.chang.simpleblog.demo;
 
-import com.chang.simpleblog.basedata.dao.IUserDao;
+import com.chang.simpleblog.basedata.dao.UserDao;
 import com.chang.simpleblog.basedata.entity.User;
 import org.junit.After;
 import org.junit.Before;
@@ -21,7 +21,7 @@ import java.util.List;
 @SpringBootTest
 public class UserTest {
     @Autowired
-    private IUserDao userDao;
+    private UserDao userDao;
 
     @Before
     public void before(){
@@ -50,6 +50,8 @@ public class UserTest {
         for(User user : users){
             System.out.println(user);
         }
+        User use =  userDao.findUserByUsername("admin");
+        System.out.println(use);
     }
     @After
     public void after(){
