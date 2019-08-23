@@ -1,5 +1,6 @@
 package com.chang.simpleblog.config;
 
+import com.chang.simpleblog.common.utils.StringUtil;
 import com.chang.simpleblog.realm.UserRealm;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
@@ -7,9 +8,11 @@ import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSource
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
+import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.core.annotation.Order;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -20,6 +23,7 @@ import java.util.Map;
  * @Version 1.0
  */
 @Configuration
+@Order(2)
 public class ShiroConfig {
 
     /**
@@ -52,7 +56,14 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/blog/hello", "anon");
         //测试权限用
         filterChainDefinitionMap.put("/swagger-ui.html", "anon");
-
+        //测试外部请求
+        filterChainDefinitionMap.put("/sendMessage","anon");
+        String urlStr = LocalSetting.getSetting("ignore-check-url");
+        if(StringUtil.isNotBlank(urlStr)){
+            for(String url : urlStr.split(",")){
+                filterChainDefinitionMap.put(url,"anon");
+            }
+        }
         // 配置退出过滤器,其中的具体的退出代码Shiro已经替我们实现了
         filterChainDefinitionMap.put("/logout", "logout");
 

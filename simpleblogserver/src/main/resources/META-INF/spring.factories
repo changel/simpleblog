@@ -1,0 +1,4 @@
+# Auto Configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.chang.simpleblog.config.ShiroConfig,\
+com.chang.simpleblog.config.LocalSetting
