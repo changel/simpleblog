@@ -4,31 +4,13 @@
 
 const path = require('path')
 
-const BLOG_SERVERURL = 'http://127.0.0.1:80'
-const MANAGER_SERVERURL = 'http://127.0.0.1:8082'
-
 module.exports = {
   dev: {
 
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {
-      '/blog':{ //此处并非一定和url一致。
-        target: BLOG_SERVERURL,
-        changeOrigin:true,//允许跨域
-        pathRewrite:{
-          '^/': ''
-        }
-      },
-      '/manager':{
-        target: MANAGER_SERVERURL,
-        changeOrigin:true,//允许跨域
-        pathRewrite:{
-          '^/': ''
-        }
-      }
-    },
+    proxyTable: {},
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
@@ -38,13 +20,6 @@ module.exports = {
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
-    // Use Eslint Loader?
-    // If true, your code will be linted during bundling and
-    // linting errors and warnings will be shown in the console.
-    useEslint: true,
-    // If true, eslint errors and warnings will also be shown in the error overlay
-    // in the browser.
-    showEslintErrorsInOverlay: false,
 
     /**
      * Source Maps
