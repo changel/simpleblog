@@ -21,7 +21,7 @@ public class RequestDemo {
     }
 
     @RequestMapping(value = "/sendMessage",method = RequestMethod.POST)
-    public ResponseData sendMessage(@RequestParam String tel,@RequestParam String message){
+    public ResponseData sendMessage(@RequestParam String tel,@RequestParam String message,@RequestParam String channel,@RequestParam String source){
         LOGGER.info("发送消息成功  :  [ tel : "+tel+"][ msg : " + message+" ]");
         return ResponseDataUtils.buildSuccess("发送消息成功  :  [ tel : "+tel+"][ msg : " + message+" ]");
     }
